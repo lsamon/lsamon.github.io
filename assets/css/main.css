@@ -2601,9 +2601,18 @@
 		left: 1px !important;
 	}
 
+	#skills h2 {
+		margin-bottom: 20px;
+	}
+	
+	.skills li {
+		display: inline-block;
+		padding: 5px;
+	}
+
 	.skills img {
-		width: 30px;
-		height: 30px;
+		width: 60px;
+		height: 60px;
 	}
 
 	.desaturate {
