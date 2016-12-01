@@ -2629,6 +2629,10 @@
     -webkit-filter: grayscale(0); /* Old WebKit */
 }
 
+.row .pgwSlider .ps-current a p {
+	font-size: 12px !important;
+}
+
 .row ul.pgwSlider > li span, .pgwSlider > .ps-list > li span {
 	display: none !important;
 }
