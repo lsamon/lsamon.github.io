@@ -2604,7 +2604,7 @@
 	#skills h2 {
 		margin-bottom: 20px;
 	}
-	
+
 	.skills li {
 		display: inline-block;
 		padding: 5px;
@@ -2627,4 +2627,8 @@
     filter: grayscale(0%);
     filter: none;
     -webkit-filter: grayscale(0); /* Old WebKit */
+}
+
+.row ul.pgwSlider > li span, .pgwSlider > .ps-list > li span {
+	display: none;
 }
