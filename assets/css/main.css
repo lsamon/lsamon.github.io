@@ -2630,5 +2630,5 @@
 }
 
 .row ul.pgwSlider > li span, .pgwSlider > .ps-list > li span {
-	display: none;
+	display: none !important;
 }
