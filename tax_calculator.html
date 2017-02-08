@@ -18,12 +18,54 @@
       <div class="calc-input">
         <h3>Calculate your tax and your after tax salary</h3>
         <form method="get" class="calc-form">
-          <label for="tax-amount">Enter your taxable income in dollars:</label>
+          <label for="tax-amount">Enter your taxable income in Tshs:</label>
           <input type="number" name="tax-amount" id="tax-amount" value="" placeholder="50000">
           <input type="submit" id="calculate-tax" value="Calculate"></input>
       </form>
-        <p>For example, if you earn $50,000 enter in "50000"</p>
-        <p>Income includes pension?</p><input type="checkbox" name="pension" class="check-pension">
+        <p>For example, if you earn 50,000 Tshs enter in "50000"</p>
+        <p>Income includes pension? <input type="checkbox" name="pension" class="check-pension"></p>
+      </div>
+
+      <div class="tax-info">
+        <h3>Information about tax charges</h3>
+        <table>
+          <tr>
+            <th>From</th>
+            <th>To</th>
+            <th>Tax rate</th>
+            <th>Plus</th>
+          </tr>
+          <tr>
+            <td>0</td>
+            <td>170,000</td>
+            <td>0</td>
+            <td>0</td>
+          </tr>
+          <tr>
+            <td>170,001</td>
+            <td>360,000</td>
+            <td>9%</td>
+            <td>0</td>
+          </tr>
+          <tr>
+            <td>360,001</td>
+            <td>540,000</td>
+            <td>20%</td>
+            <td>17,100</td>
+          </tr>
+          <tr>
+            <td>540,001</td>
+            <td>720,000</td>
+            <td>25%</td>
+            <td>53,100</td>
+          </tr>
+          <tr>
+            <td>720,001</td>
+            <td>infinity</td>
+            <td>30%</td>
+            <td>98,100</td>
+          </tr>
+        </table>
       </div>
 
       <div class="calc-result">
