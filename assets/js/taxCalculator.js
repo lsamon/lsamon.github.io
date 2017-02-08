@@ -13,16 +13,16 @@ var taxOnNSSF = function(amount){
 var calcTax = function(amount){
  var tax = 0;
     if(amount > 720000){
-      tax = taxOnIncome(amount, 0.3) + 98100;
+      tax = taxOnIncome(amount - 720000, 0.3) + 98100;
     }
     else if(amount > 540000){
-      tax = taxOnIncome(amount, 0.25) + 53100;
+      tax = taxOnIncome(amount - 540000, 0.25) + 53100;
     }
     else if( amount > 360000){
-      tax = taxOnIncome(amount, 0.2) + 17100;
+      tax = taxOnIncome(amount - 360000, 0.2) + 17100;
     }
     else if(amount > 170000){
-      tax = taxOnIncome(amount, 0.09);
+      tax = taxOnIncome(amount - 170000, 0.09);
     }
     else{
       tax = taxOnIncome(amount, 0);
