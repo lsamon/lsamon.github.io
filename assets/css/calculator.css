@@ -15,3 +15,11 @@ h3 {
 .container p {
   font-size: 0.75em;
 }
+
+.container .tax-info {
+  margin: 50px 0;
+}
+
+.tax-info table {
+  text-align: center;
+}
