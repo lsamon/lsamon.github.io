@@ -32,7 +32,7 @@ var calcTax = function(amount){
 }
 
 $(document).ready(function(){
-  // $('.calc-result').hide();
+  $('.calc-result').hide();
   $(".calc-form").on('submit', function (e) {
     e.preventDefault();
     var income = $('#tax-amount').val();
@@ -57,7 +57,7 @@ $(document).ready(function(){
     $('.total-tax').text(taxAmount);
     $('.net-income').text(income - taxAmount);
 
-    // $('.calc-result').fadeIn(1000);
+    $('.calc-result').fadeIn(1000);
 
   });
 })
