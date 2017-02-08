@@ -4,17 +4,52 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="assets/css/normalize.css">
+  <link rel="stylesheet" href="assets/css/calculator.css">
+
+  <script src="assets/js/jquery.min.js" charset="utf-8"></script>
+  <script src="assets/js/taxCalculator.js" charset="utf-8"></script>
+
   <title>C&amp;A Tanzania Tax Calculator</title>
 </head>
 <body>
   <div class="container">
     <div class="calculator">
-      <h3>Calculate your tax and your after tax salary</h3>
-      <label for="tax-amount">Enter your taxable income in dollars:</label>
-      <input type="text" name="tax-amount" value="" placeholder="50000">
+      <div class="calc-input">
+        <h3>Calculate your tax and your after tax salary</h3>
+        <form method="get" class="calc-form">
+          <label for="tax-amount">Enter your taxable income in dollars:</label>
+          <input type="number" name="tax-amount" id="tax-amount" value="" placeholder="50000">
+          <input type="submit" id="calculate-tax" value="Calculate"></input>
+      </form>
+        <p>For example, if you earn $50,000 enter in "50000"</p>
+        <p>Income includes pension?</p><input type="checkbox" name="pension" class="check-pension">
+      </div>
 
-      <p>For example, if you earn $50,000 enter in "50000"</p>
-      <p>Income includes pension?</p><input type="checkbox" name="pension" class="check-pension">
+      <div class="calc-result">
+        <table style="width:100%">
+          <tr>
+            <th>Base Income:</th>
+            <td class="base-income"></td>
+          </tr>
+          <tr>
+            <th>Tax on Income:</th>
+            <td class="tax-on-income"></td>
+          </tr>
+          <tr>
+            <th>Social Security:</th>
+            <td class="social-security"></td>
+          </tr>
+          <tr>
+            <th class="sub-total">Total Tax:</th>
+            <td class="total-tax"></td>
+          </tr>
+          <tr>
+            <th class="sub-total">Net Income:</th>
+            <td class="net-income"></td>
+          </tr>
+        </table>
+      </div>
     </div>
   </div>
 </body>
