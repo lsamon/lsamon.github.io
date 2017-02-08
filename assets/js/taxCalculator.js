@@ -32,6 +32,7 @@ var calcTax = function(amount){
 }
 
 $(document).ready(function(){
+  $('.calc-result').hide();
   $(".calc-form").on('submit', function (e) {
     e.preventDefault();
     var income = $('#tax-amount').val();
@@ -55,6 +56,8 @@ $(document).ready(function(){
     $('.social-security').text(taxOnNSSF(income));
     $('.total-tax').text(taxAmount);
     $('.net-income').text(income - taxAmount);
+
+    $('.calc-result').fadeIn(1000);
 
   });
 })
