@@ -36,7 +36,15 @@ $(document).ready(function(){
     e.preventDefault();
     var income = $('#tax-amount').val();
 
-    var taxAmount = calcTax(income) + taxOnNSSF(income);
+    var $pension = $('.check-pension');
+    var taxAmount = 0;
+    if($pension.is(':checked')){
+      taxAmount = calcTax(income) + taxOnNSSF(income);
+    } else {
+      taxAmount = calcTax(income);
+    }
+
+
     var netIncome = income - taxAmount;
 
     console.log(taxAmount);
