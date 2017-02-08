@@ -13,14 +13,31 @@ h3 {
   padding: 5px;
 }
 
-.container p {
+.container p, label {
   font-size: 0.75em;
 }
 
 .container .tax-info {
   margin: 50px 0;
 }
+#tax-amount {
+  padding: 5px;
+  border-radius: 0;
+}
 
-.tax-info table {
+#calculate-tax {
+  padding: 7px;
+}
+
+table {
   text-align: center;
+  border: 1px solid grey;
+  border-radius: 5px;
+  padding: 5px;
+}
+
+table td {
+  border: 1px solid #ccb;
+  border-radius: 5px;
+  padding: 3px;
 }
