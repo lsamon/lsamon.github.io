@@ -31,13 +31,20 @@ h3 {
 
 table {
   text-align: center;
-  border: 1px solid grey;
-  border-radius: 5px;
+  border-collapse: collapse;
   padding: 5px;
 }
 
-table td {
+table td, th {
   border: 1px solid #ccb;
-  border-radius: 5px;
   padding: 3px;
+}
+
+table th {
+  padding: 6px;
+  background: #ccc;
+}
+
+.tax-info tr.highlighted {
+  background: whitesmoke;
 }
