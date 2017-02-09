@@ -1,18 +1,21 @@
-var payments = [];
+const SKILLSDEVELOPMENT = 0.045;
+const WORKERSCOMPENSATION = 0.01;
 var total;
-const NSSF = 0.1
 
-var taxOnIncome = function(amount, lowerBracket, rate){
-  return (amount - lowerBracket) * rate;
+var taxOnIncome = function(income, lowerBracket, rate){
+  return (income - lowerBracket) * rate;
 }
 
-var taxOnNSSF = function(amount){
-  return amount * NSSF;
+var taxOnMisc = function(income, rate){
+  return income * rate;
+}
+
+var incomeAfterPension = function(income, rate){
+  return income - (taxOnMisc(income, rate))
 }
 
 var calcTax = function(amount){
  var tax = 0;
- amount = amount - taxOnNSSF(amount);
     if(amount > 720000){
       tax = taxOnIncome(amount, 720000, 0.3) + 98100;
     }
@@ -46,22 +49,36 @@ $(document).ready(function(){
   $(".calc-form").on('submit', function (e) {
     e.preventDefault();
     var income = $('#tax-amount').val();
-
-    var $pension = $('.check-pension');
     var taxAmount = 0;
-    if($pension.is(':checked')){
-      taxAmount = calcTax(income) + taxOnNSSF(income);
+    var socialDeductions = 0;
+
+    if($('.five').is(':checked')){
+      taxAmount = calcTax(incomeAfterPension(income, 0.05));
+      socialDeductions = taxOnMisc(income, 0.15);
+    } else if($('.ten').is(':checked')){
+      taxAmount = calcTax(incomeAfterPension(income, 0.1));
+      socialDeductions = taxOnMisc(income, 0.1);
     } else {
-      taxAmount = calcTax(income);
+      alert('Please select your social security deduction rate!');
+      return;
     }
 
     var netIncome = income - taxAmount;
-
+    // Employee Deductions
     $('.base-income').text(income);
-    $('.tax-on-income').text(calcTax(income));
-    $('.social-security').text(taxOnNSSF(income));
-    $('.total-tax').text(taxAmount);
+    $('.tax-on-income').text(taxAmount);
+    $('.ss-employee').text(taxOnMisc(income, 0.2) - socialDeductions);
     $('.net-income').text(income - taxAmount);
+    // Deductions end here
+
+    // Employer deductions
+    $('.skills-dev').text(taxOnMisc(income, SKILLSDEVELOPMENT));
+    $('.ss-employer').text(socialDeductions);
+    $('.workers-comp').text(taxOnMisc(income, WORKERSCOMPENSATION));
+    var totalDeductions = taxOnMisc(income, SKILLSDEVELOPMENT) + socialDeductions + taxOnMisc(income, WORKERSCOMPENSATION);
+    $('.total-deductions').text(totalDeductions);
+
+    //Employer deductions end here
 
     $('.calc-result').fadeIn(1000);
     $('#tax-amount').val("");

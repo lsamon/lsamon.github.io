@@ -19,9 +19,15 @@
         <h3>Calculate your tax and your after tax salary</h3>
         <form method="get" class="calc-form">
           <label for="tax-amount">Enter your taxable income in Tshs:</label>
-          <input type="number" name="tax-amount" id="tax-amount" value="" placeholder="50000">
+          <input type="number" name="tax-amount" id="tax-amount" placeholder="50000">
           <p>For example, if you earn 50,000 Tshs enter in "50000"</p>
-          <p>Income includes pension? <input type="checkbox" name="pension" class="check-pension"></p>
+
+          <p>Social Security Deduction</p>
+          <ul class="ss-percent">
+            <li>5% <input type="radio" name="percent" class="five"></li>
+            <li>10% <input type="radio" name="percent" class="ten"></li>
+          </ul>
+
 
           <input type="submit" id="calculate-tax" value="Calculate"></input>
         </form>
@@ -71,28 +77,49 @@
 
       <div class="calc-result">
         <h3>Summary</h3>
-        <table>
-          <tr>
-            <th>Base Income:</th>
-            <td class="base-income"></td>
-          </tr>
-          <tr>
-            <th>PAYE:</th>
-            <td class="tax-on-income"></td>
-          </tr>
-          <tr>
-            <th>Social Security:</th>
-            <td class="social-security"></td>
-          </tr>
-          <tr>
-            <th class="sub-total">Total Tax:</th>
-            <td class="total-tax"></td>
-          </tr>
-          <tr>
-            <th class="sub-total">Net Income:</th>
-            <td class="net-income"></td>
-          </tr>
-        </table>
+        <div class="employee">
+          <h4>Employer</h4>
+          <table>
+            <tr>
+              <th>Base Income:</th>
+              <td class="base-income"></td>
+            </tr>
+            <tr>
+              <th>PAYE:</th>
+              <td class="tax-on-income"></td>
+            </tr>
+            <tr>
+              <th>Social Security:</th>
+              <td class="ss-employee"></td>
+            </tr>
+            <tr>
+              <th class="sub-total">Net Income:</th>
+              <td class="net-income"></td>
+            </tr>
+          </table>
+        </div>
+
+        <div class="employer">
+          <h4>Employer</h4>
+          <table>
+            <tr>
+              <th>Skills development levy:</th>
+              <td class="skills-dev"></td>
+            </tr>
+            <tr>
+              <th>Social Security:</th>
+              <td class="ss-employer"></td>
+            </tr>
+            <tr>
+              <th>Workers compensation fund:</th>
+              <td class="workers-comp"></td>
+            </tr>
+            <tr>
+              <th>Employer Total Deductions:</th>
+              <td class="total-deductions"></td>
+            </tr>
+          </table>
+        </div>
       </div>
     </div>
   </div>
