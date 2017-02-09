@@ -20,10 +20,11 @@
         <form method="get" class="calc-form">
           <label for="tax-amount">Enter your taxable income in Tshs:</label>
           <input type="number" name="tax-amount" id="tax-amount" value="" placeholder="50000">
+          <p>For example, if you earn 50,000 Tshs enter in "50000"</p>
+          <p>Income includes pension? <input type="checkbox" name="pension" class="check-pension"></p>
+
           <input type="submit" id="calculate-tax" value="Calculate"></input>
-      </form>
-        <p>For example, if you earn 50,000 Tshs enter in "50000"</p>
-        <p>Income includes pension? <input type="checkbox" name="pension" class="check-pension"></p>
+        </form>
       </div>
 
       <div class="tax-info">
@@ -70,7 +71,7 @@
 
       <div class="calc-result">
         <h3>Summary</h3>
-        <table style="width:100%">
+        <table>
           <tr>
             <th>Base Income:</th>
             <td class="base-income"></td>
