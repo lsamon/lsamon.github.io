@@ -3,11 +3,6 @@ body {
   -moz-font-smoothing: antialised;
 }
 
-.calculator {
-  padding: 10px;
-  margin: 10px;
-}
-
 h3 {
   font-size: 1.25em;
   color: #aaa;
@@ -17,6 +12,15 @@ h3 {
   max-width: 960px;
   margin: 0 auto;
   padding: 5px;
+}
+
+.calculator {
+  max-width: 700px;
+  padding: 30px;
+  margin: 50px;
+  background: whitesmoke;
+  border-radius: 3px;
+  margin: 0 auto;
 }
 
 .container p, label, td {
@@ -42,7 +46,12 @@ h3 {
   padding: 5px;
   background: #00a1d3;
   box-shadow: #00a1d3;
+  border-color:#00a1d3;
   color: #fff;
+}
+
+.calc-input #calculate-tax:hover {
+  opacity: 0.4;
 }
 
 table {
@@ -62,7 +71,7 @@ table td, th {
 
 table th {
   padding: 6px;
-  background: #FF9148;
+  background: #00a1d3;
   color: white;
   font-size: 1em;
   font-weight: 600;
