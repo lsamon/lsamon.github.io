@@ -40,8 +40,8 @@ h3 {
   /*display: block;*/
   margin: 10px auto 0;
   padding: 5px;
-  background: rgba(255,145,72, 1);
-  border-color: rgba(255,145,72, 0.2);
+  background: #00a1d3;
+  box-shadow: #00a1d3;
   color: #fff;
 }
 
@@ -56,7 +56,7 @@ table td {
 }
 
 table td, th {
-  border: 1px solid #ccb;
+  border: 1px solid #00a1d3;
   padding: 3px;
 }
 
@@ -69,7 +69,7 @@ table th {
 }
 
 .tax-info tr.highlighted {
-  background: #ffe1b8;
+  background: #add8e6;
 }
 
 .calc-result h3{
