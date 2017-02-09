@@ -3,6 +3,11 @@ body {
   -moz-font-smoothing: antialised;
 }
 
+.calculator {
+  padding: 10px;
+  margin: 10px;
+}
+
 h3 {
   font-size: 1.25em;
   color: #aaa;
