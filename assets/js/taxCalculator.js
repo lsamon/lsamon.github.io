@@ -12,6 +12,7 @@ var taxOnNSSF = function(amount){
 
 var calcTax = function(amount){
  var tax = 0;
+ amount = amount - taxOnNSSF(amount);
     if(amount > 720000){
       tax = taxOnIncome(amount, 720000, 0.3) + 98100;
     }
