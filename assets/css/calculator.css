@@ -97,3 +97,7 @@ table th {
 .calc-result table td {
   width: 30%;
 }
+
+.net-income, .total-tax, .tax-on-income {
+  font-weight: 600;
+}
