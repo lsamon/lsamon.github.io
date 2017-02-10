@@ -73,6 +73,15 @@ h3 {
   opacity: 0.4;
 }
 
+ul.ss-percent {
+  list-style: none;
+}
+
+ul.ss-percent li {
+  display: inline-block;
+  width: 60px;  
+}
+
 table {
   text-align: center;
   border-collapse: collapse;
