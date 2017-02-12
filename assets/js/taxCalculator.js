@@ -44,26 +44,47 @@ $(document).ready(function(){
     }
   }
 
+  // toggle class for the percentage buttons
+  $('.radio').on('click', function(){
+    if($(this).hasClass('five')){
+      $(this).addClass('clicked');
+      if($('.ten').hasClass('clicked')){
+        $('.ten').removeClass('clicked');
+      }
+    } else if($(this).hasClass('ten')){
+      $(this).addClass('clicked');
+      if($('.five').hasClass('clicked')){
+        $('.five').removeClass('clicked');
+      }
+    } else { }
+  });
+
 
   $('.calc-result').hide();
   $(".calc-form").on('submit', function (e) {
-    e.preventDefault();
+    e.preventDefault(); // Prevent the default action of submitting a form
     var income = $('#tax-amount').val();
     var taxAmount = 0;
     var socialDeductions = 0;
 
-    if($('.five').is(':checked')){
-      taxAmount = calcTax(incomeAfterPension(income, 0.05));
-      socialDeductions = taxOnMisc(income, 0.15);
-    } else if($('.ten').is(':checked')){
-      taxAmount = calcTax(incomeAfterPension(income, 0.1));
-      socialDeductions = taxOnMisc(income, 0.1);
-    } else {
-      alert('Please select your social security deduction rate!');
+
+    // check if the Percentage Divs have been clicked
+    var $foundFiveClicked = $('.five.radio.clicked');
+    var $foundTenClicked = $('.ten.radio.clicked');
+
+      if($foundFiveClicked.length > 0){
+        taxAmount = calcTax(incomeAfterPension(income, 0.05));
+        socialDeductions = taxOnMisc(income, 0.15);
+      } else if($foundTenClicked.length > 0) {
+        taxAmount = calcTax(incomeAfterPension(income, 0.1));
+        socialDeductions = taxOnMisc(income, 0.1);
+      }else {
+      alert("Please select your social security deduction rate!");
       return;
     }
 
     var netIncome = income - taxAmount;
+
     // Employee Deductions
     $('.base-income').text(income);
     $('.tax-on-income').text(taxAmount);

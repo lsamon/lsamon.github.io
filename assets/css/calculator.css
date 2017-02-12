@@ -11,22 +11,6 @@ h3 {
   font-size: 1.25em;
 }
 
-.calc-result {
-  border: 1px solid #ccc;
-  border-radius: 3px;
-  background: #fff;
-  padding:10px;
-  -webkit-box-shadow: 3px 3px 5px 6px #ccc;  /* Safari 3-4, iOS 4.0.2 - 4.2, Android 2.3+ */
-  -moz-box-shadow:    3px 3px 5px 6px #ccc;  /* Firefox 3.5 - 3.6 */
-  box-shadow:         3px 3px 5px 6px #ccc;  /* Opera 10.5, IE 9, Firefox 4+, Chrome 6+, iOS 5 */
-}
-}
-
-.calc-result h4 {
-  font-size: 1em;
-  text-align: center;
-}
-
 .container {
   max-width: 960px;
   margin: 0 auto;
@@ -60,11 +44,12 @@ h3 {
 
 .calc-input #calculate-tax {
   width: 150px;
-  /*display: block;*/
-  margin: 10px auto 0;
+  margin: 15px auto 0;
   padding: 5px;
   background: #00a1d3;
-  box-shadow: #00a1d3;
+  box-shadow: 0 0 10px 0 #00a1d3;
+  -webkit-box-shadow: 0 0 10px 0 #00a1d3;
+  -mox-box-shadow: 0 0 10px 0 #00a1d3;
   border-color:#00a1d3;
   color: #fff;
 }
@@ -73,15 +58,38 @@ h3 {
   opacity: 0.4;
 }
 
-ul.ss-percent {
-  list-style: none;
-  margin: 0;
-  padding: 0;
+.ss-percent {
+  color: white;
 }
 
-ul.ss-percent li {
+.ss-percent p.action-statement {
+  color: #aaa;
+  font-size: 1em;
+  font-weight: 400;
+}
+
+.ss-percent .radio {
   display: inline-block;
   width: 60px;
+  height: 30px;
+  background: #aaa;
+  text-align: center;
+  line-height: 30px;
+  transition: all 0.5s;
+  -webkit-box-shadow: 2px 2px 2px 2px #ccc;  /* Safari 3-4, iOS 4.0.2 - 4.2, Android 2.3+ */
+  -moz-box-shadow:    2px 2px 2px 2px #ccc;  /* Firefox 3.5 - 3.6 */
+  box-shadow:         2px 2px 2px 2px #ccc;  /* Opera 10.5, IE 9, Firefox 4+, Chrome 6+, iOS 5 */
+}
+
+.ss-percent .radio:hover {
+  cursor: pointer;
+  background: #add8e6;
+  color: black;
+}
+
+.clicked {
+  background: #add8e6 !important;
+  color: black;
 }
 
 table {
@@ -111,7 +119,24 @@ table th {
   background: #add8e6;
 }
 
+.calc-result {
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  background: #fff;
+  padding:10px;
+  -webkit-box-shadow: 3px 3px 5px 6px #ccc;  /* Safari 3-4, iOS 4.0.2 - 4.2, Android 2.3+ */
+  -moz-box-shadow:    3px 3px 5px 6px #ccc;  /* Firefox 3.5 - 3.6 */
+  box-shadow:         3px 3px 5px 6px #ccc;  /* Opera 10.5, IE 9, Firefox 4+, Chrome 6+, iOS 5 */
+  margin-bottom: 20px;
+}
+
 .calc-result h3{
+  text-align: center;
+}
+
+.calc-result h4 {
+  font-size: 1em;
+  font-weight: 600;
   text-align: center;
 }
 
@@ -126,6 +151,10 @@ table th {
 
 .calc-result table td {
   width: 30%;
+}
+
+.calc-result .employer {
+  margin-bottom: 20px; 
 }
 
 .net-income, .total-tax, .tax-on-income {

@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <link rel="stylesheet" href="assets/css/normalize.css">
+  <link rel="stylesheet" href="assets/css/font-awesome.min.css">
   <link rel="stylesheet" href="assets/css/calculator.css">
 
   <script src="assets/js/jquery.min.js" charset="utf-8"></script>
@@ -21,13 +22,11 @@
           <label for="tax-amount">Enter your taxable income in Tshs:</label>
           <input type="number" name="tax-amount" id="tax-amount" placeholder="50000">
           <p>For example, if you earn 50,000 Tshs enter in "50000"</p>
-
-          <p>Social Security Deduction</p>
-          <ul class="ss-percent">
-            <li>5% <input type="radio" name="percent" class="five radio"></li>
-            <li>10% <input type="radio" name="percent" class="ten radio"></li>
-          </ul>
-
+          <div class="ss-percent">
+            <p class="action-statement">Social Security Deduction</p>
+            <div class="five radio">5%</div>
+            <div class="ten radio">10%</div>
+          </div>
 
           <input type="submit" id="calculate-tax" value="Calculate"></input>
         </form>
