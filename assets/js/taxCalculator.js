@@ -35,6 +35,11 @@ var calcTax = function(amount){
     return tax;
 }
 
+var numberToHuman = function(number) {
+  var nf = Intl.NumberFormat();
+  return nf.format(number);
+}
+
 $(document).ready(function(){
   var $rows = $('.tax-info tr')
   for(var i = 0; i < $rows.length; i++){
@@ -67,7 +72,6 @@ $(document).ready(function(){
     var taxAmount = 0;
     var socialDeductions = 0;
 
-
     // check if the Percentage Divs have been clicked
     var $foundFiveClicked = $('.five.radio.clicked');
     var $foundTenClicked = $('.ten.radio.clicked');
@@ -86,18 +90,19 @@ $(document).ready(function(){
     var netIncome = income - taxAmount;
 
     // Employee Deductions
-    $('.base-income').text(income);
-    $('.tax-on-income').text(taxAmount);
-    $('.ss-employee').text(taxOnMisc(income, 0.2) - socialDeductions);
-    $('.net-income').text(income - taxAmount);
+    $('.base-income').text(numberToHuman(income));
+    $('.tax-on-income').text(numberToHuman(taxAmount));
+    $('.ss-employee').text(numberToHuman(taxOnMisc(income, 0.2) - socialDeductions));
+    $('.total-employee-deductions').text(numberToHuman(socialDeductions + taxAmount));
+    $('.net-income').text(numberToHuman(income - taxAmount));
     // Deductions end here
 
     // Employer deductions
-    $('.skills-dev').text(taxOnMisc(income, SKILLSDEVELOPMENT));
-    $('.ss-employer').text(socialDeductions);
-    $('.workers-comp').text(taxOnMisc(income, WORKERSCOMPENSATION));
+    $('.skills-dev').text(numberToHuman(taxOnMisc(income, SKILLSDEVELOPMENT)));
+    $('.ss-employer').text(numberToHuman(socialDeductions));
+    $('.workers-comp').text(numberToHuman(taxOnMisc(income, WORKERSCOMPENSATION)));
     var totalDeductions = taxOnMisc(income, SKILLSDEVELOPMENT) + socialDeductions + taxOnMisc(income, WORKERSCOMPENSATION);
-    $('.total-deductions').text(totalDeductions);
+    $('.total-deductions').text(numberToHuman(totalDeductions));
 
     //Employer deductions end here
 

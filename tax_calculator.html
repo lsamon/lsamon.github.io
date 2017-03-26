@@ -17,6 +17,12 @@
   <div class="container">
     <div class="calculator">
       <div class="calc-input">
+        <h4>Instructions</h4>
+        <ol type="a">
+          <li>Enter your gross monthly salary in Tshs (including social security deductions such e.g NSSF and PPF)</li>
+          <li>Select social security deduction from your gross pay (either 5% or 10%)</li>
+          <li>Hit "Calculate" and the results will instantly appear at the bottom of the page</li>
+        </ol>
         <h3>Calculate your tax and your after tax salary</h3>
         <form method="get" class="calc-form">
           <label for="tax-amount">Enter your taxable income in Tshs:</label>
@@ -33,7 +39,7 @@
       </div>
 
       <div class="tax-info">
-        <h3>Information about tax charges</h3>
+        <h3>Individual tax rates 2016/2017</h3>
         <table style="width:100%">
           <tr>
             <th>From</th>
@@ -75,12 +81,12 @@
       </div>
 
       <div class="calc-result">
-        <h3>Summary</h3>
+        <h3>Taxes and Deductions</h3>
         <div class="employee">
           <h4>Employer</h4>
           <table>
             <tr>
-              <th>Base Income:</th>
+              <th>Gross Monthly Income - Tshs:</th>
               <td class="base-income"></td>
             </tr>
             <tr>
@@ -90,6 +96,10 @@
             <tr>
               <th>Social Security:</th>
               <td class="ss-employee"></td>
+            </tr>
+            <tr>
+              <th>Total Employee Deductions:</th>
+              <td class="total-employee-deductions"></td>
             </tr>
             <tr>
               <th class="sub-total">Net Income:</th>
