@@ -18,24 +18,27 @@
   <div class="container">
     <div class="calculator">
       <div class="calc-input">
-        <h4>Instructions</h4>
-        <ol type="a">
-          <li>Enter your gross monthly salary in Tshs (including social security deductions such e.g NSSF and PPF)</li>
-          <li>Select social security deduction from your gross pay (either 5% or 10%)</li>
-          <li>Hit "Calculate" and the results will instantly appear at the bottom of the page</li>
-        </ol>
-        <h3>Calculate your tax and your after tax salary</h3>
+        <div class="instructions">
+          <h4>Instructions</h4>
+          <ol type="a">
+            <li>Enter your gross monthly salary in Tshs (including social security deductions such e.g NSSF and PPF)</li>
+            <li>Select social security deduction from your gross pay (either 5% or 10%)</li>
+            <li>Hit "Calculate" and the results will instantly appear at the bottom of the page</li>
+          </ol>
+        </div>
+
         <form method="get" class="calc-form">
-          <label for="tax-amount">Enter your taxable income in Tshs:</label>
+          <p class="action-statement">Enter your taxable income in Tshs: </p>
           <input type="number" name="tax-amount" id="tax-amount" placeholder="50000">
           <p>For example, if you earn 50,000 Tshs enter in "50000"</p>
           <div class="ss-percent">
-            <p class="action-statement">Social Security Deduction</p>
+            <p class="action-statement">Social Security Deduction: </p>
             <div class="five radio">5%</div>
             <div class="ten radio">10%</div>
           </div>
 
-          <input type="submit" id="calculate-tax" value="Calculate"></input>
+          <input type="submit" class="btn reset" id="clear-values" value="Reset"></input>
+          <input type="submit" class="btn" id="calculate-tax" value="Calculate"></input>
         </form>
       </div>
 
@@ -110,7 +113,7 @@
         </div>
 
         <div class="employer">
-          <h4>Employer</h4>
+          <h4>Amounts payable by Employer (Tshs)</h4>
           <table>
             <tr>
               <th>Skills development levy:</th>
@@ -125,12 +128,16 @@
               <td class="workers-comp"></td>
             </tr>
             <tr>
-              <th>Employer Total Deductions:</th>
+              <th>Total payable by Employer:</th>
               <td class="total-deductions"></td>
             </tr>
           </table>
         </div>
       </div>
+        <p><strong>Disclaimer:</strong>  Although we have taken all reasonable care in designing this calculator,
+          we do not accept responsibility for any errors or inaccuracies that it may present.
+          This page has been prepared for quick reference only.
+        </p>
     </div>
   </div>
 </body>

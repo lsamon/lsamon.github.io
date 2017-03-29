@@ -7,8 +7,8 @@ h3, h4, h5 {
   color: #aaa;
 }
 
-h3 {
-  font-size: 1.25em;
+h3, label {
+  font-size: 1em;
 }
 
 .container {
@@ -26,7 +26,7 @@ h3 {
   margin: 0 auto;
 }
 
-.container p, label, td, li {
+.container p, td, li {
   font-size: 0.75em;
 }
 
@@ -38,11 +38,18 @@ h3 {
   border-radius: 0;
 }
 
-.calc-input {
-  max-width: 500px;
+p.action-statement {
+  color: #aaa;
+  font-size: 1em;
+  font-weight: 500;
+  display: inline-block;
 }
 
-.calc-input #calculate-tax {
+.calc-input {
+  max-width: 700px;
+}
+
+.calc-input .btn{
   width: 150px;
   margin: 15px auto 0;
   padding: 5px;
@@ -54,18 +61,34 @@ h3 {
   color: #fff;
 }
 
+.calc-input .reset {
+  background: #fff;
+  -webkit-box-shadow: 0 0 10px 0 #fff;
+  -mox-box-shadow: 0 0 10px 0 #fff;
+  border-color:#fff;
+  color: #aaa;
+}
+
 .calc-input #calculate-tax:hover {
   opacity: 0.4;
 }
 
-.ss-percent {
-  color: white;
+.calc-input .reset:hover {
+  opacity: 0.6;
 }
 
-.ss-percent p.action-statement {
-  color: #aaa;
-  font-size: 1em;
-  font-weight: 400;
+.calc-input .instructions {
+  width: 500px;
+  padding: 5px;
+  background: rgba(211,211,211,0.4);
+  margin: 0 auto 30px;
+  -webkit-box-shadow: 3px 3px 5px 6px #ccc;  /* Safari 3-4, iOS 4.0.2 - 4.2, Android 2.3+ */
+  -moz-box-shadow:    3px 3px 5px 6px #ccc;  /* Firefox 3.5 - 3.6 */
+  box-shadow:         3px 3px 5px 6px #ccc;
+}
+
+.ss-percent {
+  color: white;
 }
 
 .ss-percent .radio {

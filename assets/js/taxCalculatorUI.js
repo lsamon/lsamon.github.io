@@ -24,7 +24,7 @@ $(document).ready(function(){
 
 
   $('.calc-result').hide();
-  $(".calc-form").on('submit', function (e) {
+  $("#calculate-tax, .five, .ten").on('click', function (e) {
     calculator;
     e.preventDefault(); // Prevent the default action of submitting a form
 
@@ -66,7 +66,22 @@ $(document).ready(function(){
     //Employer deductions end here
 
     $('.calc-result').fadeIn(1000);
+    // $('#tax-amount').val("");
+
+  });
+
+
+  $('.reset').on('click', function(e){
+    e.preventDefault();
     $('#tax-amount').val("");
+    if ($('.five').hasClass('clicked')){
+      $('.five').removeClass('clicked');
+    }
+    if ($('.ten').hasClass('clicked')){
+      $('.ten').removeClass('clicked');
+    }
+
+    $('.calc-result').hide();
 
   });
 })
