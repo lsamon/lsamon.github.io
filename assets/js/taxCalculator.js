@@ -3,10 +3,8 @@ var calculator = {
   taxAmount: 0,
   employerSocialDeductions: 0,
   employeeSocialDeductions: 0,
-  totalDeductions: 0,
   SKILLSDEVELOPMENT: 0.045,
   WORKERSCOMPENSATION: 0.01,
-  total: 0,
   taxOnIncome: function(income, lowerBracket, rate){
     return (income - lowerBracket) * rate;
   },
@@ -34,6 +32,15 @@ var calculator = {
         tax = this.taxOnIncome(amount, 0, 0);
       }
       return tax;
+  },
+  totalEmployeeDeductions: function(taxDeductions){
+    return this.employeeSocialDeductions + taxDeductions;
+  },
+  totalEmployerDeductions: function(){
+    return this.employerSocialDeductions + this.taxOnMisc(this.income, this.WORKERSCOMPENSATION) + this.taxOnMisc(this.income, this.SKILLSDEVELOPMENT);
+  },
+  netIncome: function(income, totalDeductions){
+    return income - deductions;
   }
 };
 

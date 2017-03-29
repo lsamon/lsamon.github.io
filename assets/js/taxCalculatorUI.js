@@ -27,7 +27,7 @@ $(document).ready(function(){
   $(".calc-form").on('submit', function (e) {
     calculator;
     e.preventDefault(); // Prevent the default action of submitting a form
-    
+
     calculator.income = $('#tax-amount').val();
 
     // check if the Percentage Divs have been clicked
@@ -53,7 +53,7 @@ $(document).ready(function(){
     $('.base-income').text(numberToHuman(calculator.income));
     $('.tax-on-income').text(numberToHuman(calculator.taxAmount));
     $('.ss-employee').text(numberToHuman(calculator.employeeSocialDeductions));
-    $('.total-employee-deductions').text(numberToHuman(calculator.taxAmount + calculator.employeeSocialDeductions));
+    $('.total-employee-deductions').text(numberToHuman(calculator.totalEmployeeDeductions(calculator.taxAmount,calculator.employeeSocialDeductions)));
     $('.net-income').text(numberToHuman(calculator.netIncome));
     // Deductions end here
 
@@ -61,8 +61,7 @@ $(document).ready(function(){
     $('.skills-dev').text(numberToHuman(calculator.taxOnMisc(calculator.income, calculator.SKILLSDEVELOPMENT)));
     $('.ss-employer').text(numberToHuman(calculator.employerSocialDeductions));
     $('.workers-comp').text(numberToHuman(calculator.taxOnMisc(calculator.income, calculator.WORKERSCOMPENSATION)));
-    calculator.totalDeductions = calculator.taxOnMisc(calculator.income, calculator.SKILLSDEVELOPMENT) + calculator.employerSocialDeductions + calculator.taxOnMisc(calculator.income, calculator.WORKERSCOMPENSATION);
-    $('.total-deductions').text(numberToHuman(calculator.totalDeductions));
+    $('.total-deductions').text(numberToHuman(calculator.totalEmployerDeductions()));
 
     //Employer deductions end here
 
