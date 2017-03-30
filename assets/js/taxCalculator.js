@@ -3,7 +3,7 @@ var calculator = {
   taxAmount: 0,
   employerSocialDeductions: 0,
   employeeSocialDeductions: 0,
-  SKILLSDEVELOPMENT: 0.045,
+  SKILLSDEVELOPMENT: 0.05,
   WORKERSCOMPENSATION: 0.01,
   taxOnIncome: function(income, lowerBracket, rate){
     return (income - lowerBracket) * rate;
