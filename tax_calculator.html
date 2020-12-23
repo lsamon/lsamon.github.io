@@ -1,144 +1,156 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <link rel="stylesheet" href="assets/css/normalize.css">
-  <link rel="stylesheet" href="assets/css/font-awesome.min.css">
-  <link rel="stylesheet" href="assets/css/calculator.css">
-
-  <script src="assets/js/jquery.min.js" charset="utf-8"></script>
-  <script src="assets/js/taxCalculator.js" charset="utf-8"></script>
-  <script src="assets/js/taxCalculatorUI.js" charset="utf-8"></script>
-
-  <title>C&amp;A Tanzania Tax Calculator</title>
-</head>
-<body>
-  <div class="container">
-    <div class="calculator">
-      <div class="calc-input">
-        <div class="instructions">
-          <h4>Instructions</h4>
-          <ol type="a">
-            <li>Enter your gross monthly salary in Tshs (including social security deductions such e.g NSSF and PPF)</li>
-            <li>Select social security deduction from your gross pay (either 5% or 10%)</li>
-            <li>Hit "Calculate" and the results will instantly appear at the bottom of the page</li>
-          </ol>
-        </div>
-
-        <form method="get" class="calc-form">
-          <p class="action-statement">Enter your taxable income in Tshs: </p>
-          <input type="number" name="tax-amount" id="tax-amount" placeholder="50000">
-          <p>For example, if you earn 50,000 Tshs enter in "50000"</p>
-          <div class="ss-percent">
-            <p class="action-statement">Social Security Deduction: </p>
-            <div class="five radio">5%</div>
-            <div class="ten radio">10%</div>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="assets/css/normalize.css">
+    <link rel="stylesheet" href="assets/css/font-awesome.min.css">
+    <link rel="stylesheet" href="assets/css/calculator.css">
+    <title>C&amp;A Tanzania Tax Calculator</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="calculator">
+        <div class="calc-input">
+          <div class="instructions">
+            <h4>Instructions</h4>
+            <ol type="a">
+              <li>Enter your gross monthly salary in Tshs (including social security deductions such e.g NSSF and PPF)</li>
+              <li>Select social security deduction from your gross pay (either 5% or 10%)</li>
+              <li>Hit "Calculate" and the results will instantly appear at the bottom of the page</li>
+            </ol>
           </div>
 
-          <input type="submit" class="btn reset" id="clear-values" value="Reset"></input>
-          <input type="submit" class="btn" id="calculate-tax" value="Calculate"></input>
-        </form>
-      </div>
+          <div class="calc-form">
+            <p class="action-statement">Enter your taxable income in Tshs: </p>
+            <input type="number" name="tax-amount" id="tax-amount" placeholder="50000">
+            <p>For example, if you earn 50,000 Tshs enter in "50000"</p>
+            <div class="ss-percent">
+              <p class="action-statement">Social Security Deduction: </p>
+              <div
+                class="five radio"
+                data-employer-deductions="0.15"
+                data-employee-deductions="0.05"
+                data-social-security-deducation="0.05"
+              >
+                5%
+              </div>
+              <div
+                class="ten radio"
+                data-employer-deductions="0.1"
+                data-employee-deductions="0.1"
+                data-social-security-deducation="0.1"
+              >
+                10%
+              </div>
+            </div>
+            <div class="action-buttons">
+              <button type="submit" class="btn reset" id="clear-values">Clear Values</button>
+              <button type="submit" class="btn" id="calculate-tax">Calculate</button>
+            </div>
+          </div>
+        </div>
 
-      <div class="tax-info">
-        <h3>Individual tax rates 2016/2017</h3>
-        <table style="width:100%">
-          <tr>
-            <th>From</th>
-            <th>To</th>
-            <th>Tax rate</th>
-            <th>Plus</th>
-          </tr>
-          <tr>
-            <td>0</td>
-            <td>170,000</td>
-            <td>0</td>
-            <td>0</td>
-          </tr>
-          <tr>
-            <td>170,001</td>
-            <td>360,000</td>
-            <td>9%</td>
-            <td>0</td>
-          </tr>
-          <tr>
-            <td>360,001</td>
-            <td>540,000</td>
-            <td>20%</td>
-            <td>17,100</td>
-          </tr>
-          <tr>
-            <td>540,001</td>
-            <td>720,000</td>
-            <td>25%</td>
-            <td>53,100</td>
-          </tr>
-          <tr>
-            <td>720,001</td>
-            <td>infinity</td>
-            <td>30%</td>
-            <td>98,100</td>
-          </tr>
-        </table>
-      </div>
-
-      <div class="calc-result">
-        <h3>Taxes and Deductions</h3>
-        <div class="employee">
-          <h4>Employee Deductions</h4>
-          <table>
+        <div class="tax-info">
+          <h3>Individual tax rates 2016/2017</h3>
+          <table style="width:100%">
             <tr>
-              <th>Gross Monthly Income - Tshs:</th>
-              <td class="base-income"></td>
+              <th>From</th>
+              <th>To</th>
+              <th>Tax rate</th>
+              <th>Plus</th>
             </tr>
             <tr>
-              <th>PAYE:</th>
-              <td class="tax-on-income"></td>
+              <td>0</td>
+              <td>170,000</td>
+              <td>0</td>
+              <td>0</td>
+            </tr>
+            <tr class="highlighted">
+              <td>170,001</td>
+              <td>360,000</td>
+              <td>9%</td>
+              <td>0</td>
             </tr>
             <tr>
-              <th>Social Security:</th>
-              <td class="ss-employee"></td>
+              <td>360,001</td>
+              <td>540,000</td>
+              <td>20%</td>
+              <td>17,100</td>
+            </tr>
+            <tr class="highlighted">
+              <td>540,001</td>
+              <td>720,000</td>
+              <td>25%</td>
+              <td>53,100</td>
             </tr>
             <tr>
-              <th>Total Employee Deductions:</th>
-              <td class="total-employee-deductions"></td>
-            </tr>
-            <tr>
-              <th class="sub-total">Net Income:</th>
-              <td class="net-income"></td>
+              <td>720,001</td>
+              <td>infinity</td>
+              <td>30%</td>
+              <td>98,100</td>
             </tr>
           </table>
         </div>
 
-        <div class="employer">
-          <h4>Amounts payable by Employer (Tshs)</h4>
-          <table>
-            <tr>
-              <th>Skills development levy:</th>
-              <td class="skills-dev"></td>
-            </tr>
-            <tr>
-              <th>Social Security:</th>
-              <td class="ss-employer"></td>
-            </tr>
-            <tr>
-              <th>Workers compensation fund:</th>
-              <td class="workers-comp"></td>
-            </tr>
-            <tr>
-              <th>Total payable by Employer:</th>
-              <td class="total-deductions"></td>
-            </tr>
-          </table>
+        <div class="calc-result hidden">
+          <h3>Taxes and Deductions</h3>
+          <div class="employee">
+            <h4>Employee Deductions</h4>
+            <table>
+              <tr>
+                <th>Gross Monthly Income - Tshs:</th>
+                <td class="base-income"></td>
+              </tr>
+              <tr>
+                <th>PAYE:</th>
+                <td class="tax-on-income"></td>
+              </tr>
+              <tr>
+                <th>Social Security:</th>
+                <td class="ss-employee"></td>
+              </tr>
+              <tr>
+                <th>Total Employee Deductions:</th>
+                <td class="total-employee-deductions"></td>
+              </tr>
+              <tr>
+                <th class="sub-total">Net Income:</th>
+                <td class="net-income"></td>
+              </tr>
+            </table>
+          </div>
+
+          <div class="employer">
+            <h4>Amounts payable by Employer (Tshs)</h4>
+            <table>
+              <tr>
+                <th>Skills development levy:</th>
+                <td class="skills-dev"></td>
+              </tr>
+              <tr>
+                <th>Social Security:</th>
+                <td class="ss-employer"></td>
+              </tr>
+              <tr>
+                <th>Workers compensation fund:</th>
+                <td class="workers-comp"></td>
+              </tr>
+              <tr>
+                <th>Total payable by Employer:</th>
+                <td class="total-deductions"></td>
+              </tr>
+            </table>
+          </div>
         </div>
+          <p><strong>Disclaimer:</strong>  Although we have taken all reasonable care in designing this calculator,
+            we do not accept responsibility for any errors or inaccuracies that it may present.
+            This page has been prepared for quick reference only.
+          </p>
       </div>
-        <p><strong>Disclaimer:</strong>  Although we have taken all reasonable care in designing this calculator,
-          we do not accept responsibility for any errors or inaccuracies that it may present.
-          This page has been prepared for quick reference only.
-        </p>
     </div>
-  </div>
-</body>
+    <script src="assets/js/jquery.min.js" charset="utf-8"></script>
+    <script src="assets/js/TaxCalculatorUI.js" charset="utf-8" type="module"></script>
+  </body>
 </html>

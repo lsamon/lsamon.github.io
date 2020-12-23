@@ -49,7 +49,8 @@ p.action-statement {
   max-width: 700px;
 }
 
-.calc-input .btn{
+.calc-input .btn {
+  cursor: pointer;
   width: 150px;
   margin: 15px auto 0;
   padding: 5px;
@@ -62,6 +63,7 @@ p.action-statement {
 }
 
 .calc-input .reset {
+  cursor: pointer;
   background: #fff;
   -webkit-box-shadow: 0 0 10px 0 #fff;
   -mox-box-shadow: 0 0 10px 0 #fff;
@@ -153,7 +155,11 @@ table th {
   margin-bottom: 20px;
 }
 
-.calc-result h3{
+.calc-result.hidden {
+  display: none;
+}
+
+.calc-result h3 {
   text-align: center;
 }
 
