@@ -16,17 +16,17 @@ var calculator = {
   },
   calcTax: function(amount){
    var tax = 0;
-      if(amount > 720000){
-        tax = this.taxOnIncome(amount, 720000, 0.3) + 98100;
+      if(amount > 1000000){
+        tax = this.taxOnIncome(amount, 1000000, 0.3) + 130500;
       }
-      else if(amount > 540000){
-        tax = this.taxOnIncome(amount, 540000, 0.25) + 53100;
+      else if(amount > 760000){
+        tax = this.taxOnIncome(amount, 760000, 0.25) + 70500;
       }
-      else if( amount > 360000){
-        tax = this.taxOnIncome(amount, 360000, 0.2) + 17100;
+      else if( amount > 520000){
+        tax = this.taxOnIncome(amount, 520000, 0.2) + 22500;
       }
-      else if(amount > 170000){
-        tax = this.taxOnIncome(amount, 170000, 0.09);
+      else if(amount > 270000){
+        tax = this.taxOnIncome(amount, 270000, 0.09);
       }
       else{
         tax = this.taxOnIncome(amount, 0, 0);
