@@ -1,7 +1,7 @@
 export default class TaxCalculator {
-  constructor(grossIncome = 0, socialSecurityDeducation = 0, employeeDeductions = 0, employerDeductions = 0) {
+  constructor(grossIncome = 0, socialSecurityDeduction = 0, employeeDeductions = 0, employerDeductions = 0) {
     this.grossIncome = grossIncome;
-    this.socialSecurityDeducation = socialSecurityDeducation;
+    this.socialSecurityDeduction = socialSecurityDeduction;
     this.employeeDeductions = employeeDeductions;
     this.employerDeductions = employerDeductions;
   }
@@ -32,7 +32,7 @@ export default class TaxCalculator {
     } else {
       return 1000000;
     }
-  } 
+  }
 
   lowerBoundPlus = () => {
     if(this.grossIncome <= 520000) {
@@ -44,7 +44,7 @@ export default class TaxCalculator {
     } else {
       return 130500;
     }
-  } 
+  }
 
   payE = () => {
     return ((this.grossIncome - this.lowerBound()) * this.rate()) + this.lowerBoundPlus();
@@ -63,7 +63,7 @@ export default class TaxCalculator {
   }
 
   totalEmployerDeductions = (workersCompensation, skillsDevelopment) => {
-    return this.socialSecurityDeducation + this.otherDeductions(workersCompensation) + this.otherDeductions(skillsDevelopment);
+    return this.otherDeductions(this.socialSecurityDeduction)   + this.otherDeductions(workersCompensation) + this.otherDeductions(skillsDevelopment);
   }
 
   netIncome = () => {
