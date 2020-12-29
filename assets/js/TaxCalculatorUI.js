@@ -3,23 +3,28 @@ import TaxCalculator from './TaxCalculator.js';
 let taxCalculator = new TaxCalculator();
 const workersCompensation = 0.01;
 const skillsDevelopment = 0.05;
-let commaPosition = 4;
-let taxableAmountArr = [];
 
 function grossIncome() {
-  const el = document.querySelector('#taxable-amount');
+  const el = document.querySelector('.real-gross-income');
   return el.value == '' ? 0 : parseInt(el.value);
 }
 
 document.querySelector('#taxable-amount').addEventListener('blur', () => {
+  const taxableAmount = document.querySelector('#taxable-amount').value.replace(/,/gi, '');
+  document.querySelector('.real-gross-income').value = taxableAmount;
   taxCalculator.grossIncome = grossIncome();
 });
 
-document.querySelector('#taxable-amount').addEventListener('keyup', () => {
+document.querySelector('#taxable-amount').addEventListener('keyup', (e) => {
   if (document.querySelector('input#taxable-amount').classList.contains('invalid-input')) {
     document.querySelector('.taxable-amount-invalid').classList.add('hidden');
     document.querySelector('input#taxable-amount').classList.remove('invalid-input');
   }
+
+  let income = document.querySelector('#taxable-amount').value;
+  income = income.replace(/,/gi, "");
+  income = income.split(/(?=(?:\d{3})+$)/).join(",");
+  document.querySelector('#taxable-amount').value = income;
 });
 
 document.querySelectorAll('.radio').forEach((item) => {

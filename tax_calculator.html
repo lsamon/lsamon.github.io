@@ -28,7 +28,8 @@
             <div class="taxable-income-section">
               <p class="action-statement">Enter your taxable income in Tshs: </p>
               <div>
-                <input type="number" name="taxable-amount" id="taxable-amount" placeholder="50000">
+                <input type="hidden" name="real-gross-income" class="real-gross-income">
+                <input type="text" name="taxable-amount" id="taxable-amount" placeholder="50000">
                 <div class="taxable-amount-invalid error hidden">Income cannot be blank</div>
               </div>
               <p>For example, if you earn 50,000 Tshs enter in "50000"</p>
