@@ -13,36 +13,45 @@
     <div class="container">
       <div class="calculator">
         <div class="calc-input">
-          <div class="instructions">
-            <h4>Instructions</h4>
-            <ol type="a">
-              <li>Enter your gross monthly salary in Tshs (including social security deductions such e.g NSSF and PPF)</li>
-              <li>Select social security deduction from your gross pay (either 5% or 10%)</li>
-              <li>Hit "Calculate" and the results will instantly appear at the bottom of the page</li>
-            </ol>
+          <div class="instructions-wrapper">
+            <div class="instructions">
+              <h4 class="text-center">Instructions</h4>
+              <ol type="a">
+                <li>Enter your gross monthly salary in Tshs (including social security deductions such e.g NSSF and PPF)</li>
+                <li>Select social security deduction from your gross pay (either 5% or 10%)</li>
+                <li>Hit "Calculate" and the results will instantly appear at the bottom of the page</li>
+              </ol>
+            </div>
           </div>
 
           <div class="calc-form">
-            <p class="action-statement">Enter your taxable income in Tshs: </p>
-            <input type="number" name="tax-amount" id="tax-amount" placeholder="50000">
-            <p>For example, if you earn 50,000 Tshs enter in "50000"</p>
-            <div class="ss-percent">
-              <p class="action-statement">Social Security Deduction: </p>
-              <div
-                class="radio"
-                data-employer-deductions="0.15"
-                data-employee-deductions="0.05"
-                data-social-security-deduction="0.05"
-              >
-                5%
+            <div class="taxable-income-section">
+              <p class="action-statement">Enter your taxable income in Tshs: </p>
+              <div>
+                <input type="number" name="taxable-amount" id="taxable-amount" placeholder="50000">
+                <div class="taxable-amount-invalid error hidden">Income cannot be blank</div>
               </div>
-              <div
-                class="radio"
-                data-employer-deductions="0.1"
-                data-employee-deductions="0.1"
-                data-social-security-deduction="0.1"
-              >
-                10%
+              <p>For example, if you earn 50,000 Tshs enter in "50000"</p>
+            </div>
+            <div class="social-security-section">
+              <p class="action-statement">Social Security Deduction: </p>
+              <div>
+                <div
+                  class="radio"
+                  data-employer-deductions="0.15"
+                  data-employee-deductions="0.05"
+                  data-social-security-deduction="0.05"
+                >
+                  5%
+                </div>
+                <div
+                  class="radio"
+                  data-employer-deductions="0.1"
+                  data-employee-deductions="0.1"
+                  data-social-security-deduction="0.1"
+                >
+                  10%
+                </div>
               </div>
             </div>
             <div class="action-buttons">
@@ -150,7 +159,6 @@
           </p>
       </div>
     </div>
-    <script src="assets/js/jquery.min.js" charset="utf-8"></script>
     <script src="assets/js/TaxCalculatorUI.js" charset="utf-8" type="module"></script>
   </body>
 </html>

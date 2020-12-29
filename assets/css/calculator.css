@@ -12,18 +12,21 @@ h3, label {
 }
 
 .container {
-  max-width: 960px;
-  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   padding: 5px;
+}
+
+.text-center {
+  text-align: center;
 }
 
 .calculator {
   max-width: 700px;
-  padding: 30px;
-  margin: 50px;
+  padding: 20px;
   background: whitesmoke;
   border-radius: 3px;
-  margin: 0 auto;
 }
 
 .container p, td, li {
@@ -31,22 +34,23 @@ h3, label {
 }
 
 .container .tax-info {
-  margin: 30px 0;
-}
-#tax-amount {
-  padding: 2px;
-  border-radius: 0;
+  margin: 20px 0;
 }
 
 p.action-statement {
   color: #aaa;
   font-size: 1em;
   font-weight: 500;
-  display: inline-block;
 }
 
 .calc-input {
   max-width: 700px;
+}
+
+.instructions-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .calc-input .btn {
@@ -60,6 +64,7 @@ p.action-statement {
   -mox-box-shadow: 0 0 10px 0 #00a1d3;
   border-color:#00a1d3;
   color: #fff;
+  outline: none;
 }
 
 .calc-input .reset {
@@ -83,17 +88,16 @@ p.action-statement {
   width: 500px;
   padding: 5px;
   background: rgba(211,211,211,0.4);
-  margin: 0 auto 30px;
   -webkit-box-shadow: 3px 3px 5px 6px #ccc;  /* Safari 3-4, iOS 4.0.2 - 4.2, Android 2.3+ */
   -moz-box-shadow:    3px 3px 5px 6px #ccc;  /* Firefox 3.5 - 3.6 */
   box-shadow:         3px 3px 5px 6px #ccc;
 }
 
-.ss-percent {
+.social-security-section {
   color: white;
 }
 
-.ss-percent .radio {
+.social-security-section .radio {
   display: inline-block;
   width: 60px;
   height: 30px;
@@ -106,7 +110,7 @@ p.action-statement {
   box-shadow:         2px 2px 2px 2px #ccc;  /* Opera 10.5, IE 9, Firefox 4+, Chrome 6+, iOS 5 */
 }
 
-.ss-percent .radio:hover {
+.social-security-section .radio:hover {
   cursor: pointer;
   background: #add8e6;
   color: black;
@@ -115,6 +119,10 @@ p.action-statement {
 .clicked {
   background: #add8e6 !important;
   color: black;
+}
+
+.action-buttons {
+  margin-top: 20px;
 }
 
 table {
@@ -140,6 +148,26 @@ table th {
   font-weight: 600;
 }
 
+input[type="text"].invalid-input,
+input[type="number"].invalid-input
+ {
+  border-color: pink;
+}
+
+input[type="text"],
+input[type="number"]
+{
+  display: inline-block;
+  width: 340px;
+  height: 40px;
+  box-sizing: border-box;
+  outline: none;
+  border: 1px solid lightgray;
+  border-radius: 3px;
+  padding: 10px;
+  transition: all 0.1s ease-out;
+}
+
 .tax-info tr.highlighted {
   background: #add8e6;
 }
@@ -155,8 +183,14 @@ table th {
   margin-bottom: 20px;
 }
 
-.calc-result.hidden {
+.hidden {
   display: none;
+}
+
+.error {
+  margin-top: 5px;
+  font-size: 12px;
+  color: #ff0000;
 }
 
 .calc-result h3 {
