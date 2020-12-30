@@ -9,6 +9,11 @@ function grossIncome() {
   return el.value == '' ? 0 : parseInt(el.value);
 }
 
+function formattedNumber(number) {
+  number = number.toString();
+  return number.split(/(?=(?:\d{3})+$)/).join(",");
+}
+
 document.querySelector('#taxable-amount').addEventListener('blur', () => {
   const taxableAmount = document.querySelector('#taxable-amount').value.replace(/,/gi, '');
   document.querySelector('.real-gross-income').value = taxableAmount;
@@ -23,7 +28,7 @@ document.querySelector('#taxable-amount').addEventListener('keyup', (e) => {
 
   let income = document.querySelector('#taxable-amount').value;
   income = income.replace(/,/gi, "");
-  income = income.split(/(?=(?:\d{3})+$)/).join(",");
+  income = formattedNumber(income);
   document.querySelector('#taxable-amount').value = income;
 });
 
@@ -49,17 +54,17 @@ document.querySelector('#calculate-tax').addEventListener('click', (e) => {
   taxCalculator.grossIncome = taxCalculator.grossIncome - socialSecurityAmount;
 
   document.querySelector('.calc-result').classList.remove('hidden');
-  document.querySelector('.base-income').textContent = grossIncome();
-  document.querySelector('.tax-on-income').textContent = taxCalculator.payE();
-  document.querySelector('.ss-employee').textContent = taxCalculator.otherDeductions(taxCalculator.socialSecurityDeduction);
-  document.querySelector('.total-employee-deductions').textContent = taxCalculator.totalEmployeeDeductions();
-  document.querySelector('.net-income').textContent = taxCalculator.netIncome();
+  document.querySelector('.base-income').textContent = formattedNumber(grossIncome());
+  document.querySelector('.tax-on-income').textContent = formattedNumber(taxCalculator.payE());
+  document.querySelector('.ss-employee').textContent = formattedNumber(taxCalculator.otherDeductions(taxCalculator.socialSecurityDeduction));
+  document.querySelector('.total-employee-deductions').textContent = formattedNumber(taxCalculator.totalEmployeeDeductions());
+  document.querySelector('.net-income').textContent = formattedNumber(taxCalculator.netIncome());
 
   // Employer deductions
-  document.querySelector('.skills-dev').textContent = taxCalculator.otherDeductions(skillsDevelopment);
-  document.querySelector('.ss-employer').textContent = taxCalculator.otherDeductions(taxCalculator.socialSecurityDeduction);
-  document.querySelector('.workers-comp').textContent = taxCalculator.otherDeductions(workersCompensation);
-  document.querySelector('.total-deductions').textContent = parseInt(taxCalculator.totalEmployerDeductions(workersCompensation, skillsDevelopment));
+  document.querySelector('.skills-dev').textContent = formattedNumber(taxCalculator.otherDeductions(skillsDevelopment));
+  document.querySelector('.ss-employer').textContent = formattedNumber(taxCalculator.otherDeductions(taxCalculator.socialSecurityDeduction));
+  document.querySelector('.workers-comp').textContent = formattedNumber(taxCalculator.otherDeductions(workersCompensation));
+  document.querySelector('.total-deductions').textContent = formattedNumber(parseInt(taxCalculator.totalEmployerDeductions(workersCompensation, skillsDevelopment)));
   taxCalculator.grossIncome = grossIncome();
 });
 

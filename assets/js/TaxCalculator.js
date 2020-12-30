@@ -1,12 +1,12 @@
 export default class TaxCalculator {
-  constructor(grossIncome = 0, socialSecurityDeduction = 0, employeeDeductions = 0, employerDeductions = 0) {
-    this.grossIncome = grossIncome;
-    this.socialSecurityDeduction = socialSecurityDeduction;
-    this.employeeDeductions = employeeDeductions;
-    this.employerDeductions = employerDeductions;
+  constructor() {
+    this.grossIncome = 0;
+    this.socialSecurityDeduction = 0;
+    this.employeeDeductions = 0;
+    this.employerDeductions = 0;
   }
 
-  rate = () => {
+  taxRate = () => {
     if(this.grossIncome <= 270000) {
       return 0.0;
     } else if(this.grossIncome <= 520000) {
@@ -20,7 +20,7 @@ export default class TaxCalculator {
     }
   }
 
-  lowerBound = () => {
+  fromAmount = () => {
     if(this.grossIncome <= 270000) {
       return 0;
     } else if(this.grossIncome <= 520000) {
@@ -34,7 +34,7 @@ export default class TaxCalculator {
     }
   }
 
-  lowerBoundPlus = () => {
+  plusAmount = () => {
     if(this.grossIncome <= 520000) {
       return 0;
     } else if(this.grossIncome <= 760000) {
@@ -47,7 +47,7 @@ export default class TaxCalculator {
   }
 
   payE = () => {
-    return ((this.grossIncome - this.lowerBound()) * this.rate()) + this.lowerBoundPlus();
+    return ((this.grossIncome - this.fromAmount()) * this.taxRate()) + this.plusAmount();
   }
 
   otherDeductions = (deduction) => {
@@ -55,7 +55,7 @@ export default class TaxCalculator {
   }
 
   incomeAfterPension = () => {
-    return this.grossIncome - (this.otherDeductions(this.rate))
+    return this.grossIncome - (this.otherDeductions(this.taxRate))
   }
   
   totalEmployeeDeductions = () => {
