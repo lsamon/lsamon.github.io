@@ -47,7 +47,6 @@ export default class TaxCalculator {
   }
 
   payE = () => {
-    debugger;
     return ((this.grossIncome - this.fromAmount()) * this.taxRate()) + this.plusAmount();
   }
 
