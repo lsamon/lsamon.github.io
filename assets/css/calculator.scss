@@ -15,56 +15,24 @@ h3, label {
   font-size: 1em;
 }
 
-::-webkit-input-placeholder {
-  /* Chrome, Firefox, Opera, Safari 10.1+ */
-  color: #d3d2d2;
-  opacity: 1;
-  /* Firefox */
+::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: rgb(211, 210, 210);
+  opacity: 1; /* Firefox */
 }
 
-:-ms-input-placeholder {
-  /* Chrome, Firefox, Opera, Safari 10.1+ */
-  color: #d3d2d2;
-  opacity: 1;
-  /* Firefox */
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+  color: rgb(211, 210, 210);
 }
 
-::-ms-input-placeholder {
-  /* Chrome, Firefox, Opera, Safari 10.1+ */
-  color: #d3d2d2;
-  opacity: 1;
-  /* Firefox */
-}
-
-::placeholder {
-  /* Chrome, Firefox, Opera, Safari 10.1+ */
-  color: #d3d2d2;
-  opacity: 1;
-  /* Firefox */
-}
-
-:-ms-input-placeholder {
-  /* Internet Explorer 10-11 */
-  color: #d3d2d2;
-}
-
-::-ms-input-placeholder {
-  /* Microsoft Edge */
-  color: #d3d2d2;
+::-ms-input-placeholder { /* Microsoft Edge */
+  color: rgb(211, 210, 210);
 }
 
 .container {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -ms-flex-line-pack: center;
-      align-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
   padding: 5px;
 }
 
@@ -99,15 +67,9 @@ p.action-statement {
 }
 
 .instructions-wrapper {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  justify-content: center;
+  align-items: center;
 }
 
 .calc-input .btn {
@@ -119,7 +81,7 @@ p.action-statement {
   box-shadow: 0 0 10px 0 #ee7700;
   -webkit-box-shadow: 0 0 10px 0 #ee7700;
   -mox-box-shadow: 0 0 10px 0 #ee7700;
-  border-color: #ee7700;
+  border-color:#ee7700;
   color: #fff;
   outline: none;
 }
@@ -129,7 +91,7 @@ p.action-statement {
   background: #fff;
   -webkit-box-shadow: 0 0 10px 0 #fff;
   -mox-box-shadow: 0 0 10px 0 #fff;
-  border-color: #fff;
+  border-color:#fff;
   color: #aaa;
 }
 
@@ -143,10 +105,9 @@ p.action-statement {
 
 .calc-input .instructions {
   padding: 5px;
-  -webkit-box-shadow: 3px 3px 5px 6px #ccc;
-  /* Safari 3-4, iOS 4.0.2 - 4.2, Android 2.3+ */
-  /* Firefox 3.5 - 3.6 */
-  box-shadow: 3px 3px 5px 6px #ccc;
+  -webkit-box-shadow: 3px 3px 5px 6px #ccc;  /* Safari 3-4, iOS 4.0.2 - 4.2, Android 2.3+ */
+  -moz-box-shadow:    3px 3px 5px 6px #ccc;  /* Firefox 3.5 - 3.6 */
+  box-shadow:         3px 3px 5px 6px #ccc;
 }
 
 .social-security-section {
@@ -160,13 +121,10 @@ p.action-statement {
   background: #aaa;
   text-align: center;
   line-height: 30px;
-  -webkit-transition: all 0.5s;
   transition: all 0.5s;
-  -webkit-box-shadow: 2px 2px 2px 2px #ccc;
-  /* Safari 3-4, iOS 4.0.2 - 4.2, Android 2.3+ */
-  /* Firefox 3.5 - 3.6 */
-  box-shadow: 2px 2px 2px 2px #ccc;
-  /* Opera 10.5, IE 9, Firefox 4+, Chrome 6+, iOS 5 */
+  -webkit-box-shadow: 2px 2px 2px 2px #ccc;  /* Safari 3-4, iOS 4.0.2 - 4.2, Android 2.3+ */
+  -moz-box-shadow:    2px 2px 2px 2px #ccc;  /* Firefox 3.5 - 3.6 */
+  box-shadow:         2px 2px 2px 2px #ccc;  /* Opera 10.5, IE 9, Firefox 4+, Chrome 6+, iOS 5 */
 }
 
 .social-security-section .radio:hover {
@@ -208,22 +166,22 @@ table th {
 }
 
 input[type="text"].invalid-input,
-input[type="number"].invalid-input {
+input[type="number"].invalid-input
+ {
   border-color: pink;
 }
 
 input[type="text"],
-input[type="number"] {
+input[type="number"]
+{
   display: inline-block;
   width: 340px;
   height: 40px;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
   outline: none;
   border: 1px solid lightgray;
   border-radius: 3px;
   padding: 10px;
-  -webkit-transition: all 0.1s ease-out;
   transition: all 0.1s ease-out;
 }
 
@@ -239,12 +197,10 @@ tr.highlighted > td {
   border: 1px solid #ccc;
   border-radius: 3px;
   background: #fff;
-  padding: 10px;
-  -webkit-box-shadow: 3px 3px 5px 6px #ccc;
-  /* Safari 3-4, iOS 4.0.2 - 4.2, Android 2.3+ */
-  /* Firefox 3.5 - 3.6 */
-  box-shadow: 3px 3px 5px 6px #ccc;
-  /* Opera 10.5, IE 9, Firefox 4+, Chrome 6+, iOS 5 */
+  padding:10px;
+  -webkit-box-shadow: 3px 3px 5px 6px #ccc;  /* Safari 3-4, iOS 4.0.2 - 4.2, Android 2.3+ */
+  -moz-box-shadow:    3px 3px 5px 6px #ccc;  /* Firefox 3.5 - 3.6 */
+  box-shadow:         3px 3px 5px 6px #ccc;  /* Opera 10.5, IE 9, Firefox 4+, Chrome 6+, iOS 5 */
   margin-bottom: 20px;
 }
 
@@ -288,4 +244,3 @@ tr.highlighted > td {
 .net-income, .total-tax, .tax-on-income {
   font-weight: 600;
 }
-/*# sourceMappingURL=calculator.css.map */

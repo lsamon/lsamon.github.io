@@ -1,0 +1,37 @@
+[
+  {
+    "id": 1,
+    "lowerBand": 0,
+    "upperBand": 270000,
+    "taxRate": 0,
+    "extraAmount": 0
+  },
+  {
+    "id": 2,
+    "lowerBand": 270001,
+    "upperBand": 520000,
+    "taxRate": 0.09,
+    "extraAmount": 0
+  },
+  {
+    "id": 3,
+    "lowerBand": 520001,
+    "upperBand": 760000,
+    "taxRate": 0.2,
+    "extraAmount": 22500
+  },
+  {
+    "id": 4,
+    "lowerBand": 760001,
+    "upperBand": 1000000,
+    "taxRate": 0.25,
+    "extraAmount": 70500
+  },
+  {
+    "id": 5,
+    "lowerBand": 1000001,
+    "upperBand": null,
+    "taxRate": 0.3,
+    "extraAmount": 130500
+  }
+]
