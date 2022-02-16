@@ -4,58 +4,37 @@ export default class TaxCalculator {
     this.socialSecurityDeduction = 0;
     this.employeeDeductions = 0;
     this.employerDeductions = 0;
-  }
-
-  taxRate = () => {
-    if(this.grossIncome <= 270000) {
-      return 0.0;
-    } else if(this.grossIncome <= 520000) {
-      return 0.09;
-    } else if(this.grossIncome <= 760000) {
-      return 0.2;
-    } else if(this.grossIncome <= 1000000) {
-      return 0.25;
-    } else {
-      return 0.3;
-    }
+    this.workersCompensation = 0.006;
+    this.skillsDevelopment = 0.04;
+    this.taxData = null;
   }
 
   fromAmount = () => {
-    if(this.grossIncome <= 270000) {
-      return 0;
-    } else if(this.grossIncome <= 520000) {
-      return 270000;
-    } else if(this.grossIncome <= 760000) {
-      return 520000;
-    } else if(this.grossIncome <= 1000000) {
-      return 760000;
-    } else {
-      return 1000000;
-    }
-  }
+    const item = this.currentTaxObject();
+    if(item.lowerBand ===0 ) return 0;
 
-  plusAmount = () => {
-    if(this.grossIncome <= 520000) {
-      return 0;
-    } else if(this.grossIncome <= 760000) {
-      return 22500;
-    } else if(this.grossIncome <= 1000000) {
-      return 70500;
-    } else {
-      return 130500;
-    }
+    return item.lowerBand - 1;
   }
 
   payE = () => {
-    return ((this.grossIncome - this.fromAmount()) * this.taxRate()) + this.plusAmount();
+    const taxInfo = this.currentTaxObject();
+    return taxInfo.extraAmount + taxInfo.taxRate * (this.taxableIncome() - this.fromAmount());
   }
 
   otherDeductions = (deduction) => {
     return this.grossIncome * deduction;
   }
 
+  taxableIncome = () => {
+    return this.grossIncome - this.otherDeductions(this.socialSecurityDeduction);
+  }
+
   incomeAfterPension = () => {
-    return this.grossIncome - (this.otherDeductions(this.taxRate))
+    return this.taxableIncome() - (this.otherDeductions(this.taxRate))
+  }
+
+  socialSecurityEmployerContribution = () => {
+    return this.otherDeductions(0.2) - this.otherDeductions(this.socialSecurityDeduction);
   }
   
   totalEmployeeDeductions = () => {
@@ -63,22 +42,23 @@ export default class TaxCalculator {
   }
 
   totalEmployerDeductions = (workersCompensation, skillsDevelopment) => {
-    return this.otherDeductions(this.socialSecurityDeduction)   + this.otherDeductions(workersCompensation) + this.otherDeductions(skillsDevelopment);
+    return this.otherDeductions(workersCompensation) + this.otherDeductions(skillsDevelopment);
+  }
+
+  totalPayableByEmployer = () => {
+    return Math.abs(this.socialSecurityEmployerContribution()) + this.totalEmployerDeductions(this.workersCompensation, this.skillsDevelopment);
   }
 
   netIncome = () => {
     return this.grossIncome - this.totalEmployeeDeductions();
   }
 
-  fetchData = (url) => {
-    const data = fetch(url)
-      .then(response => {
-        return response.json();
-      })
-      .then(data => {
-        return data;
-      })
+  currentTaxObject = () => {
+    const self = this;
+    const items = this.taxData.filter((item) => {
+      return (item.upperBand !== null && (self.grossIncome >= item.lowerBand && self.grossIncome <= item.upperBand)) || item.lowerBand >= self.grossIncome;
+    });
 
-    return data;
+    return items[0];
   }
 }

@@ -10,7 +10,7 @@
     "id": 2,
     "lowerBand": 270001,
     "upperBand": 520000,
-    "taxRate": 0.09,
+    "taxRate": 0.08,
     "extraAmount": 0
   },
   {
@@ -18,20 +18,20 @@
     "lowerBand": 520001,
     "upperBand": 760000,
     "taxRate": 0.2,
-    "extraAmount": 22500
+    "extraAmount": 20000
   },
   {
     "id": 4,
     "lowerBand": 760001,
     "upperBand": 1000000,
     "taxRate": 0.25,
-    "extraAmount": 70500
+    "extraAmount": 68000
   },
   {
     "id": 5,
     "lowerBand": 1000001,
     "upperBand": null,
     "taxRate": 0.3,
-    "extraAmount": 130500
+    "extraAmount": 128000
   }
 ]

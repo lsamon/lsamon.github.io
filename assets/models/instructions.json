@@ -1,14 +1,14 @@
 [
   {
     "id": 1,
-    "content": "Enter your gross monthly salary in Tshs (including social security deductions such e.g NSSF and PPF)"
+    "content": "Enter your gross monthly salary in Tshs (including social security contribution such as NSSF and PSSF)"
   },
   {
     "id": 2,
-    "content": "Select social security deduction from your gross pay (either 5% or 10%)"
+    "content": "Select social security deduction from your gross pay (either 5% for public sector employess or 10% for private sector employees)"
   },
   {
     "id": 3,
-    "content": "Hit 'Calculate' and the results will instantly appear at the bottom of the page"
+    "content": "Click 'Calculate' and the results will instantly appear at the bottom of the page"
   }
 ]

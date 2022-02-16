@@ -1,9 +1,9 @@
 import TaxCalculator from './TaxCalculator.js';
-import { even, formatPercentage, formattedNumber } from './lib/utils.js';
+import { even, formatPercentage, formattedNumber, fetchData } from './lib/utils.js';
 
 let taxCalculator = new TaxCalculator();
-const workersCompensation = 0.01;
-const skillsDevelopment = 0.05;
+taxCalculator.taxData = await fetchData('assets/models/taxDetails.json');
+const instructionsList = await fetchData('assets/models/instructions.json');
 
 const grossIncome = () => {
   const el = document.querySelector('.real-gross-income');
@@ -39,18 +39,16 @@ const addInstructions = (data, ol) => {
   ol.appendChild(li);
 }
 
-const taxData = await taxCalculator.fetchData('assets/models/taxDetails.json');
-const instructionsList = await taxCalculator.fetchData('assets/models/instructions.json');
 const tableDiv = document.getElementById('custom-table');
-addTableRows(taxData, tableDiv);
+addTableRows(taxCalculator.taxData, tableDiv);
 const instructionsOl = document.getElementById('instructions-list');
-
 instructionsList.forEach(instruction => addInstructions(instruction.content, instructionsOl));
 
 document.querySelector('#taxable-amount').addEventListener('blur', () => {
   const taxableAmount = document.querySelector('#taxable-amount').value.replace(/,/gi, '');
   document.querySelector('.real-gross-income').value = taxableAmount;
   taxCalculator.grossIncome = grossIncome();
+  taxCalculator.originalGrossIncome = grossIncome();
 });
 
 document.querySelector('#taxable-amount').addEventListener('keyup', (e) => {
@@ -83,9 +81,6 @@ document.querySelector('#calculate-tax').addEventListener('click', (e) => {
     return;
   }
 
-  let socialSecurityAmount = taxCalculator.otherDeductions(taxCalculator.socialSecurityDeduction);
-  taxCalculator.grossIncome = taxCalculator.grossIncome - socialSecurityAmount;
-
   document.querySelector('.calc-result').classList.remove('hidden');
   document.querySelector('.base-income').textContent = formattedNumber(grossIncome());
   document.querySelector('.tax-on-income').textContent = formattedNumber(taxCalculator.payE());
@@ -94,11 +89,10 @@ document.querySelector('#calculate-tax').addEventListener('click', (e) => {
   document.querySelector('.net-income').textContent = formattedNumber(taxCalculator.netIncome());
 
   // Employer deductions
-  document.querySelector('.skills-dev').textContent = formattedNumber(taxCalculator.otherDeductions(skillsDevelopment));
+  document.querySelector('.skills-dev').textContent = formattedNumber(taxCalculator.otherDeductions(taxCalculator.skillsDevelopment));
   document.querySelector('.ss-employer').textContent = formattedNumber(taxCalculator.otherDeductions(taxCalculator.socialSecurityDeduction));
-  document.querySelector('.workers-comp').textContent = formattedNumber(taxCalculator.otherDeductions(workersCompensation));
-  document.querySelector('.total-deductions').textContent = formattedNumber(parseInt(taxCalculator.totalEmployerDeductions(workersCompensation, skillsDevelopment)));
-  taxCalculator.grossIncome = grossIncome();
+  document.querySelector('.workers-comp').textContent = formattedNumber(taxCalculator.otherDeductions(taxCalculator.workersCompensation));
+  document.querySelector('.total-deductions').textContent = formattedNumber(parseInt(taxCalculator.totalPayableByEmployer()));
 });
 
 document.querySelector('#clear-values').addEventListener('click', (e) => {

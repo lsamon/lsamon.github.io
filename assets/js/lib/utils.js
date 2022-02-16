@@ -14,3 +14,10 @@ export const formatPercentage = (percentWholeNumber) => {
 export const even = (id) => {
   return id % 2 == 0;
 }
+
+export const fetchData = async (url) => {
+  const response = await fetch(url);
+  const data = await response.json();
+  console.log(data);
+  return data;
+}
