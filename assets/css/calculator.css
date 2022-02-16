@@ -53,6 +53,10 @@ h3, label {
   color: #d3d2d2;
 }
 
+.bold {
+  font-weight: bold;
+}
+
 .container {
   display: -webkit-box;
   display: -ms-flexbox;

@@ -50,9 +50,9 @@
               <div>
                 <div
                   class="radio"
-                  data-employer-deductions="0.15"
-                  data-employee-deductions="0.05"
-                  data-social-security-deduction="0.05"
+                  data-employer-deductions="0.2"
+                  data-employee-deductions="0.1"
+                  data-social-security-deduction="0.1"
                 >
                   5%
                 </div>
@@ -84,20 +84,24 @@
                   <td class="base-income"></td>
                 </tr>
                 <tr>
-                  <th>PAYE:</th>
-                  <td class="tax-on-income"></td>
-                </tr>
-                <tr>
                   <th>Social Security:</th>
                   <td class="ss-employee"></td>
                 </tr>
                 <tr>
+                  <th>Taxable Income:</th>
+                  <td class="ss-taxable-income bold"></td>
+                </tr>
+                <tr>
+                  <th>PAYE:</th>
+                  <td class="tax-on-income"></td>
+                </tr>
+                <tr>
                   <th>Total Employee Deductions:</th>
-                  <td class="total-employee-deductions"></td>
+                  <td class="total-employee-deductions bold"></td>
                 </tr>
                 <tr>
                   <th class="sub-total">Net Income:</th>
-                  <td class="net-income"></td>
+                  <td class="net-income bold"></td>
                 </tr>
               </table>
             </div>
@@ -118,7 +122,7 @@
                 </tr>
                 <tr>
                   <th>Total payable by Employer:</th>
-                  <td class="total-deductions"></td>
+                  <td class="total-deductions bold"></td>
                 </tr>
               </table>
             </div>

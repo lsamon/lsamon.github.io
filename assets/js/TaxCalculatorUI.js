@@ -85,6 +85,7 @@ document.querySelector('#calculate-tax').addEventListener('click', (e) => {
   document.querySelector('.base-income').textContent = formattedNumber(grossIncome());
   document.querySelector('.tax-on-income').textContent = formattedNumber(taxCalculator.payE());
   document.querySelector('.ss-employee').textContent = formattedNumber(taxCalculator.otherDeductions(taxCalculator.socialSecurityDeduction));
+  document.querySelector('.ss-taxable-income').textContent = formattedNumber(taxCalculator.taxableIncome());
   document.querySelector('.total-employee-deductions').textContent = formattedNumber(taxCalculator.totalEmployeeDeductions());
   document.querySelector('.net-income').textContent = formattedNumber(taxCalculator.netIncome());
 

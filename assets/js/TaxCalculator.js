@@ -11,7 +11,7 @@ export default class TaxCalculator {
 
   fromAmount = () => {
     const item = this.currentTaxObject();
-    if(item.lowerBand ===0 ) return 0;
+    if(item.lowerBand === 0 ) return 0;
 
     return item.lowerBand - 1;
   }
