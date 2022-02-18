@@ -38,7 +38,7 @@ export default class TaxCalculator {
   }
   
   totalEmployeeDeductions = () => {
-    return this.otherDeductions(this.employeeDeductions) + this.payE();
+    return this.otherDeductions(this.socialSecurityDeduction) + this.payE();
   }
 
   totalEmployerDeductions = (workersCompensation, skillsDevelopment) => {
