@@ -2,8 +2,6 @@ export default class TaxCalculator {
   constructor() {
     this.grossIncome = 0;
     this.socialSecurityDeduction = 0;
-    this.employeeDeductions = 0;
-    this.employerDeductions = 0;
     this.workersCompensation = 0.006;
     this.skillsDevelopment = 0.04;
     this.taxData = null;
@@ -34,7 +32,7 @@ export default class TaxCalculator {
   }
 
   socialSecurityEmployerContribution = () => {
-    return this.otherDeductions(0.2) - this.otherDeductions(this.socialSecurityDeduction);
+    return Math.round(this.otherDeductions(0.2 - this.socialSecurityDeduction));
   }
   
   totalEmployeeDeductions = () => {
@@ -46,7 +44,7 @@ export default class TaxCalculator {
   }
 
   totalPayableByEmployer = () => {
-    return Math.abs(this.socialSecurityEmployerContribution()) + this.totalEmployerDeductions(this.workersCompensation, this.skillsDevelopment);
+    return this.socialSecurityEmployerContribution() + this.totalEmployerDeductions(this.workersCompensation, this.skillsDevelopment);
   }
 
   netIncome = () => {

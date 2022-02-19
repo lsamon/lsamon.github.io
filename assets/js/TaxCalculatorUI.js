@@ -67,8 +67,7 @@ document.querySelectorAll('.radio').forEach((item) => {
   item.addEventListener('click', () => {
     document.querySelectorAll('.radio').forEach((button) => { button.classList.remove('clicked') });
     item.classList.add('clicked');
-    taxCalculator.employeeDeductions = parseFloat(item.dataset.employeeDeductions);
-    taxCalculator.employerDeductions = parseFloat(item.dataset.employerDeductions);
+    // taxCalculator.employerDeductions = parseFloat(item.dataset.employerDeductions);
     taxCalculator.socialSecurityDeduction = parseFloat(item.dataset.socialSecurityDeduction);
   });
 });
@@ -91,7 +90,7 @@ document.querySelector('#calculate-tax').addEventListener('click', (e) => {
 
   // Employer deductions
   document.querySelector('.skills-dev').textContent = formattedNumber(taxCalculator.otherDeductions(taxCalculator.skillsDevelopment));
-  document.querySelector('.ss-employer').textContent = formattedNumber(taxCalculator.otherDeductions(taxCalculator.socialSecurityDeduction));
+  document.querySelector('.ss-employer').textContent = formattedNumber(taxCalculator.socialSecurityEmployerContribution());
   document.querySelector('.workers-comp').textContent = formattedNumber(taxCalculator.otherDeductions(taxCalculator.workersCompensation));
   document.querySelector('.total-deductions').textContent = formattedNumber(parseInt(taxCalculator.totalPayableByEmployer()));
 });
