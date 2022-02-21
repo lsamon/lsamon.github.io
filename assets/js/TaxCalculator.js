@@ -1,3 +1,4 @@
+const TOTAL_SS_DEDUCTIONS = 0.2;
 export default class TaxCalculator {
   constructor() {
     this.grossIncome = 0;
@@ -32,7 +33,7 @@ export default class TaxCalculator {
   }
 
   socialSecurityEmployerContribution = () => {
-    return Math.round(this.otherDeductions(0.2 - this.socialSecurityDeduction));
+    return Math.round(this.otherDeductions(TOTAL_SS_DEDUCTIONS - this.socialSecurityDeduction));
   }
   
   totalEmployeeDeductions = () => {
