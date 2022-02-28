@@ -55,7 +55,8 @@ export default class TaxCalculator {
   currentTaxObject = () => {
     const self = this;
     const items = this.taxData.filter((item) => {
-      return (item.upperBand !== null && (self.grossIncome >= item.lowerBand && self.grossIncome <= item.upperBand)) || item.lowerBand >= self.grossIncome;
+      const upperBand = item.upperBand === null ? Infinity : item.upperBand;
+      return self.grossIncome >= item.lowerBand && self.grossIncome <= upperBand;
     });
 
     return items[0];

@@ -17,7 +17,7 @@
       <div class="calculator">
         <div class="calc-input">
           <div class="tax-info" style="overflow-x:auto;">
-            <h2 class="text-center">Tanzania Mainland | Individual Tax Rates per month 2020/2021</h2>
+            <h2 class="text-center">Tanzania Mainland | Individual Tax Rates per month 2021/2022</h2>
             <table id="custom-table" style="width:100%">
               <tr>
                 <th>From</th>
@@ -40,7 +40,7 @@
               <p class="action-statement">Enter your monthly taxable income in Tshs: </p>
               <div>
                 <input type="hidden" name="real-gross-income" class="real-gross-income">
-                <input type="text" name="taxable-amount" id="taxable-amount" placeholder="50000">
+                <input type="number" name="taxable-amount" id="taxable-amount" placeholder="50000">
                 <div class="taxable-amount-invalid error hidden">Income cannot be blank</div>
               </div>
               <p>For example, if you earn 50,000 Tshs enter in "50000"</p>
@@ -48,13 +48,15 @@
             <div class="social-security-section">
               <p class="action-statement">Social Security Deduction: </p>
               <div>
-                <div class="radio" data-social-security-deduction="0.05">5%</div>
-                <div class="radio" data-social-security-deduction="0.1">10%</div>
+                <input type="radio" class="radio" name="social-security" value="0.05">
+                <label for="social-scurity">5%</label>
+                <input type="radio" class="radio" name="social-security" value="0.1">
+                <label for="social-scurity">10%</label>
               </div>
             </div>
             <div class="action-buttons">
               <button type="submit" class="btn reset" id="clear-values">Clear Values</button>
-              <button type="submit" class="btn" id="calculate-tax">Calculate</button>
+              <button type="submit" class="btn disabled" id="calculate-tax">Calculate</button>
             </div>
           </div>
         </div>

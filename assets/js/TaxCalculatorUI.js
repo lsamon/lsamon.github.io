@@ -51,34 +51,66 @@ document.querySelector('#taxable-amount').addEventListener('blur', () => {
   taxCalculator.originalGrossIncome = grossIncome();
 });
 
-document.querySelector('#taxable-amount').addEventListener('keyup', (e) => {
-  if (document.querySelector('input#taxable-amount').classList.contains('invalid-input')) {
-    document.querySelector('.taxable-amount-invalid').classList.add('hidden');
-    document.querySelector('input#taxable-amount').classList.remove('invalid-input');
-  }
-
-  let income = document.querySelector('#taxable-amount').value;
-  income = income.replace(/,/gi, "");
-  income = formattedNumber(income);
-  document.querySelector('#taxable-amount').value = income;
-});
-
 document.querySelectorAll('.radio').forEach((item) => {
-  item.addEventListener('click', () => {
-    document.querySelectorAll('.radio').forEach((button) => { button.classList.remove('clicked') });
-    item.classList.add('clicked');
-    // taxCalculator.employerDeductions = parseFloat(item.dataset.employerDeductions);
-    taxCalculator.socialSecurityDeduction = parseFloat(item.dataset.socialSecurityDeduction);
+  item.addEventListener('click', (e) => {
+    if (canCalculate()) {
+      taxCalculator.socialSecurityDeduction = parseFloat(e.target.value);
+      enableButton();
+    } else {
+      disableButton();
+    }
   });
 });
 
-document.querySelector('#calculate-tax').addEventListener('click', (e) => {
-  e.preventDefault();
-  if (document.querySelector('#taxable-amount').value === "") {
-    document.querySelector('.taxable-amount-invalid').classList.remove('hidden');
-    document.querySelector('input#taxable-amount').classList.add('invalid-input');
-    return;
+const disableButton = () => {
+  document.querySelector('#calculate-tax').classList.add('disabled');
+  document.querySelector('#calculate-tax').disabled = true;
+}
+
+const enableButton = () => {
+  document.querySelector('#calculate-tax').classList.remove('disabled');
+  document.querySelector('#calculate-tax').disabled = false;
+}
+
+const showError = () => {
+  document.querySelector('.taxable-amount-invalid').classList.remove('hidden');
+  document.querySelector('input#taxable-amount').classList.add('invalid-input');
+}
+
+const hideError = () => {
+  document.querySelector('.taxable-amount-invalid').classList.add('hidden');
+  document.querySelector('input#taxable-amount').classList.remove('invalid-input');
+}
+
+const selectedRadioButton = () => {
+  const radioButtons = document.querySelectorAll('.radio');
+
+  let selected;
+  for (const radioButton of radioButtons) {
+    if (radioButton.checked) {
+      selected = radioButton.value;
+      break;
+    }
   }
+  return selected;
+}
+
+const canCalculate = () => {
+  return selectedRadioButton() && document.querySelector('#taxable-amount').value;
+}
+
+document.querySelector('#taxable-amount').addEventListener('keyup', (e) => {
+  if (canCalculate()) {
+    enableButton();
+    hideError();
+  } else {
+    disableButton();
+  }
+});
+
+document.getElementById('calculate-tax').addEventListener('click', (e) => {
+  e.preventDefault();
+  if (document.querySelector('#taxable-amount').value === "") return showError();
 
   document.querySelector('.calc-result').classList.remove('hidden');
   document.querySelector('.base-income').textContent = formattedNumber(grossIncome());
